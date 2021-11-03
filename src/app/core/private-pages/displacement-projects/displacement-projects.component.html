@@ -1,0 +1,10 @@
+<div class="private-office-caption">
+  <h1>Текущие рейсы</h1>
+</div>
+<div style="height: 20px"></div>
+<app-flag-switch class="flag-switcher" [options]="searchFlags" [(value)]="flag"></app-flag-switch>
+<app-displacement-project-table
+  [projects]="projects | async"
+  (orderMatch)="matchOrder($event)"
+  (detailsShow)="handleEvent($event)"
+></app-displacement-project-table>

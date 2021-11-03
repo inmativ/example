@@ -1,0 +1,101 @@
+@import 'theme-variables';
+@import 'shared/table';
+
+@mixin gray-fz12 {
+  font-size: 12px;
+  color: $black68;
+}
+@mixin inb-top {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 2px;
+}
+@mixin bold {
+  font-weight: 500;
+}
+
+.flight-head {
+  width: 42.5%;
+  min-width: 390px;
+}
+.flight-head-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+tbody {
+  vertical-align: top;
+}
+td {
+  padding-bottom: 13px;
+}
+
+.vehicle-cell {
+  padding-top: 9px;
+}
+
+.order-info {
+  white-space: nowrap;
+}
+.order-id {
+  @include gray-fz12;
+  @include inb-top;
+}
+.start-end-status {
+  @include inb-top;
+  margin: 0 20px;
+}
+.direction-title {
+  @include bold;
+  color: $black;
+  font-size: 16px;
+  margin: 0 0 8px;
+}
+.execution {
+  @include bold;
+  color: black;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+.price {
+  @include inb-top;
+}
+.ndc {
+  @include gray-fz12;
+}
+
+.flex-wrapper {
+  display: flex;
+}
+.baseline {
+  align-items: baseline;
+}
+.bold {
+  font-weight: 500;
+}
+.thin {
+  font-weight: 300;
+}
+
+.brigade {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+  margin-right: 48px;
+}
+.list-marker {
+  margin-top: 3px;
+}
+.list-item {
+  margin: 0 0 7px 7px;
+  display: inline-block;
+  vertical-align: top;
+}
+.button {
+  width: 132px;
+  height: 33px;
+}
+.not-found {
+  color: $orange;
+}

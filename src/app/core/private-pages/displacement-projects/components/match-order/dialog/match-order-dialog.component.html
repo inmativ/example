@@ -1,0 +1,63 @@
+<h2 class="header" mat-dialog-title>Поиск рейса для ТС</h2>
+<hr class="hr" />
+<mat-dialog-content class="dialog-content">
+  <form [formGroup]="brigadeForm">
+    <label class="standalone">
+      Тягач<br />
+      <app-plain-autocomplete
+        class="autocomplete"
+        [options]="vehicleOptions | async"
+        [formControlName]="'vehicleId'"
+      >
+      </app-plain-autocomplete>
+    </label>
+    <label class="standalone">
+      Прицеп<br />
+      <app-plain-autocomplete
+        class="autocomplete"
+        [options]="trailerOptions | async"
+        [formControlName]="'trailerId'"
+      >
+      </app-plain-autocomplete>
+    </label>
+    <label class="standalone">
+      Водитель<br />
+      <app-plain-autocomplete
+        class="autocomplete"
+        [options]="driverOptions | async"
+        [formControlName]="'driverId'"
+      >
+      </app-plain-autocomplete>
+    </label>
+  </form>
+  <form [formGroup]="matchParamsForm">
+    <fieldset class="fieldset">
+      <legend class="legend">ОТКУДА</legend>
+      <label class="fieldset-label">
+        Населённый пункт
+        <app-plain-location class="location" [formControlName]="'startLocation'"></app-plain-location>
+      </label>
+      <app-plain-moment
+        [minDate]="minDate"
+        [timeDescription]="offsetDescription"
+        [formControlName]="'startDate'"
+      ></app-plain-moment>
+    </fieldset>
+    <!-- <fieldset class="fieldset">
+      <legend class="legend">КУДА</legend>
+      <label class="fieldset-label">
+        Одна или несколько областей<br />
+        <app-plain-autocomplete
+          class="autocomplete"
+          [options]="driverOptions | async"
+          [formControlName]="'endLocation'"
+        >
+        </app-plain-autocomplete>
+      </label>
+    </fieldset> -->
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions class="buttons">
+  <button class="stroked-button-primary" mat-dialog-close>Отмена</button>
+  <button class="flat-button-primary" (click)="submit()">Поиск</button>
+</mat-dialog-actions>

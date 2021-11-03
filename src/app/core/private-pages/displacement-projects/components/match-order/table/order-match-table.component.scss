@@ -1,0 +1,67 @@
+@import 'theme-variables';
+@import 'shared/table.scss';
+
+.table {
+  font-weight: 300;
+}
+tbody {
+  color: $black68;
+}
+td {
+  height: 23px;
+  border-left: solid 1px;
+  border-color: inherit;
+  &:nth-child(1) {
+    border-left: none;
+  }
+}
+tr:nth-child(odd) {
+  border-color: $gray-tone-5;
+}
+tr:nth-child(even) {
+  border-color: $gray-tone-6;
+}
+.flex-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.incidents {
+  width: 58px;
+}
+.nds {
+  font-size: 10px;
+  color: $black68;
+  margin-left: 5px;
+}
+.city,
+.price {
+  font-size: 16px;
+}
+.city {
+  font-weight: 400;
+  color: black;
+}
+.price {
+  text-align: end;
+}
+.city,
+.nds,
+.price,
+.button-wrapper {
+  white-space: nowrap;
+}
+.count {
+  text-align: center;
+  width: 16px;
+}
+.button-wrapper {
+  display: flex;
+  gap: 10px;
+}
+.stroked-button-primary {
+  margin-left: 10px;
+  width: auto;
+  height: 23px;
+  font-size: 12px;
+}

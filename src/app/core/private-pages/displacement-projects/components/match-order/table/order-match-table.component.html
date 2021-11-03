@@ -1,0 +1,82 @@
+<table class="table">
+  <col />
+  <col class="incidents" />
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>
+        <div class="flex-wrapper">
+          <app-icon name="truck"></app-icon><app-icon name="trailer"></app-icon>
+        </div>
+      </th>
+      <th>Откуда</th>
+      <th>Куда</th>
+      <th>
+        <div class="flex-wrapper">
+          <span>Цена<span class="nds">с НДС</span></span>
+          <app-column-sorter></app-column-sorter>
+        </div>
+      </th>
+      <th>
+        <div class="flex-wrapper">
+          Загрузка
+          <app-column-sorter></app-column-sorter>
+        </div>
+      </th>
+      <th class="count">
+        <div class="flex-wrapper">
+          <app-column-sorter></app-column-sorter>
+        </div>
+      </th>
+      <th>
+        <div class="flex-wrapper">
+          Выгрузка
+          <app-column-sorter></app-column-sorter>
+        </div>
+      </th>
+      <th class="count">
+        <div class="flex-wrapper">
+          <app-column-sorter></app-column-sorter>
+        </div>
+      </th>
+      <th>Тип кузова</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let order of orders">
+      <td>{{ order.humanReadableNumber }}</td>
+      <td><!-- попробовать написать пайп для обработки состояний тягача и прицепа --></td>
+      <td class="city">{{ order.addressFrom }}</td>
+      <td class="city">{{ order.addressTo }}</td>
+      <td class="price">{{ order.price | divideDigits }} р.</td>
+      <td>
+        <span class="date-wrapper">
+          {{ order.startDate | date: 'dd.MM.yyy' }}
+          <br />
+          {{ order.startDate | date: 'HH:mm' }}
+        </span>
+      </td>
+      <td class="count">
+        <a [routerLink]="">{{ order.loadsCount }}</a>
+      </td>
+      <td>
+        {{ order.endDate | date: 'dd.MM.yyy' }}
+        <br />
+        {{ order.endDate | date: 'HH:mm' }}
+      </td>
+      <td class="count">
+        <a [routerLink]="">{{ order.unloadsCount }}</a>
+      </td>
+      <td>
+        {{ order.bodyStyle }}
+      </td>
+      <td>
+        <span class="button-wrapper">
+          <button class="stroked-button-primary" (click)="showDetails(order.id)">Подробнее</button>
+          <button class="stroked-button-primary" (click)="take(order.id)">Беру</button>
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>

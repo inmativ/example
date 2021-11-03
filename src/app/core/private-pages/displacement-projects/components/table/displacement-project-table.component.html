@@ -1,0 +1,82 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Тягач</th>
+      <th class="flight-head" *ngFor="let column of columns">
+        <div class="flight-head-flex">
+          {{ column.title }}
+          <app-column-sorter [sortField]="column.sortField"></app-column-sorter>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let project of projects">
+      <td class="vehicle-cell">
+        <span class="bold">{{ project.vehicle.registrationNumber }}</span>
+        <br />
+        <span class="thin">{{ project.vehicle.model }}</span>
+      </td>
+      <td class="flight-cell" *ngFor="let flight of project.flights">
+        <div class="flight-cell-flex">
+          <div class="order-info" *ngIf="flight.order as order; else orderNotFound">
+            <div class="order-id">№{{ order.humanReadableNumber }}</div>
+            <div class="start-end-status">
+              <div class="direction-title">
+                {{ order.addressFrom }} —
+                {{ order.addressTo }}
+              </div>
+              <div class="execution">Загрузка</div>
+              - {{ order.startDate | date: 'dd.MM.yyy' }}<br />
+              <div class="execution">Выгрузка</div>
+              - {{ order.endDate | date: 'dd.MM.yyy' }}<br />
+              <div class="execution">Статус рейса:</div>
+              {{ flight.status }}
+            </div>
+            <div class="price">
+              {{ order.price | divideDigits }} р.
+              <span class="ndc thin">
+                <ng-container *ngIf="order.ndcIncluded; else ndcNotIncluded"> с НДС </ng-container>
+                <ng-template #ndcNotIncluded> без НДС </ng-template>
+              </span>
+            </div>
+          </div>
+          <div class="flex-wrapper baseline">
+            <ul class="brigade">
+              <li *ngIf="flight.trailer as trailer">
+                <img
+                  class="list-marker"
+                  src="/assets/img/private-office/current-flights/semi-trailer.svg"
+                  alt="Полуприцеп"
+                />
+                <span class="list-item">
+                  <span class="bold">{{ trailer.registrationNumber }}</span> {{ trailer.model }}
+                </span>
+              </li>
+              <li *ngIf="flight.driver as driver">
+                <!-- TODO: Вынести иконки в отдельный компонент app icon 36 строка тоже самое-->
+                <img
+                  class="list-marker"
+                  src="/assets/img/private-office/current-flights/driver.svg"
+                  alt="Водитель"
+                />
+                <span class="list-item">{{ driver.lastNameAndInitials }}</span>
+              </li>
+            </ul>
+          </div>
+          <!-- МАТВЕЙ: рассмотреть возможность использования pipe, directive или
+            тернарного оператора вместо функций getButtonClass, getButtonText -->
+          <button
+            *ngIf="flight.button as button"
+            [class]="['button', button.class]"
+            (click)="handleButtonClick(button.action, project.vehicle, flight)"
+          >
+            {{ button.text }}
+          </button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #orderNotFound><div class="not-found">Рейс не подобран.</div></ng-template>

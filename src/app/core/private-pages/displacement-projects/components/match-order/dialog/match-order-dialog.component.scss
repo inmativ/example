@@ -1,0 +1,74 @@
+@import 'theme-variables';
+@import 'shared/mixins/scrollbar';
+
+@mixin label {
+  display: block;
+}
+
+:host {
+  color: $gray-9;
+}
+
+.header {
+  color: $black;
+  margin-top: 0;
+  font-size: 24px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.hr {
+  margin-bottom: 19px;
+  border: 1px solid $gray-tone-7;
+}
+
+.dialog-content {
+  padding: 0 40px;
+  @include scrollbar;
+}
+
+.standalone {
+  margin-bottom: 30px;
+  @include label;
+}
+
+.autocomplete {
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid $gray-tone-11;
+  font-size: 16px;
+  margin-top: 7px;
+}
+
+.fieldset {
+  border: 1px solid $gray-tone-4_5;
+  border-radius: 2px;
+  margin-bottom: 20px;
+
+  padding: 20px 23px 3px 23px;
+}
+
+.legend {
+  float: left;
+  width: 100%;
+  font-size: 18px;
+  color: $black68;
+  margin-bottom: 20px;
+}
+
+.fieldset-label {
+  margin-bottom: 25px;
+  @include label;
+}
+
+.location {
+  width: 100%;
+  height: 40px;
+  font-style: 16px;
+}
+
+.buttons {
+  justify-content: space-between;
+  padding-bottom: 15px;
+}

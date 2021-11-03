@@ -1,0 +1,20 @@
+<div class="private-office-caption">
+  <h1>Результаты поиска рейса для ТС</h1>
+</div>
+<div class="search-params">
+  <div class="title mb17">
+    Параметры поиска для
+    <span class="bold">{{ vehicleTitle | async }}</span>
+  </div>
+  <div class="chips-container mb17">
+    <span class="chip" *ngFor="let chip of chips | async">
+      {{ chip }}
+    </span>
+  </div>
+  <button class="flat-button-primary" (click)="changePickData()">Изменить параметры</button>
+</div>
+<app-order-match-table
+  [orders]="orders | async"
+  (orderTake)="take($event)"
+  (detailsShow)="showDetails($event)"
+></app-order-match-table>

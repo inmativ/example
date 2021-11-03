@@ -1,0 +1,45 @@
+@import 'base';
+
+:host {
+  display: block;
+  width: max-content;
+  min-width: 100%;
+}
+.search-params {
+  display: block;
+  background: $bg1-dark;
+  color: $black34;
+  border: none;
+  font-size: 12px;
+  min-height: 77px;
+  padding: 19px 19px 27px 19px;
+}
+.title {
+  text-transform: uppercase;
+  font-size: 16px;
+}
+.mb17 {
+  margin-bottom: 17px;
+}
+.bold {
+  font-weight: 500;
+}
+.chip {
+  background-color: $gray-tone-7;
+  border-radius: 2px;
+  height: 12px;
+  padding: 5px 7px;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  display: inline-block;
+}
+.flat-button-primary {
+  height: 21px;
+  font-size: 12px;
+  width: 144px;
+}
+.paginator {
+  display: block;
+  padding-top: 28px;
+  padding-bottom: 15px;
+}
